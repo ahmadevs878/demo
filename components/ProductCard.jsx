@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
                     height={800}
                 />
                 <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-                    <img
+                    <Image
                         className="h-3 w-3"
                         src={assets.heart_icon}
                         alt="heart_icon"
@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
                 <p className="text-xs">{4.5}</p>
                 <div className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }).map((_, index) => (
-                        <img
+                        <Image
                             key={index}
                             className="h-3 w-3"
                             src={
