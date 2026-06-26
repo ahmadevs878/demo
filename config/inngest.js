@@ -9,9 +9,8 @@ export const inngest = new Inngest({ id: "quickcart-next" });
 export const syncUserCreation = inngest.createFunction(
     {
         id: 'sync-user-from-clerk',
-       
+        triggers: { event: 'clerk/user.created' }  // <-- triggers goes here
     },
-    {event: 'clerk/user.created'},
     async ({ event }) => {
         const { id, first_name, last_name, email_addresses, image_url } = event.data
         const userData = {
@@ -28,9 +27,8 @@ export const syncUserCreation = inngest.createFunction(
 export const syncUserUpdation = inngest.createFunction(
     {
         id: 'update-user-from-clerk',
-       
+        triggers: { event: 'clerk/user.updated' }  // <-- triggers goes here
     },
-    {event : 'clerk/user.updated'},
     async ({ event }) => {
         const { id, first_name, last_name, email_addresses, image_url } = event.data
         const userData = {
@@ -47,8 +45,8 @@ export const syncUserUpdation = inngest.createFunction(
 export const syncUserDeletion = inngest.createFunction(
     {
         id: 'delete-user-with-clerk',
+        triggers: { event: 'clerk/user.deleted' }  // <-- triggers goes here
     },
-    { event: 'clerk/user.deleted' },
     async ({ event }) => {
         const { id } = event.data 
         await connectDB()
